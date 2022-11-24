@@ -1,9 +1,8 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import Item from "./Item";
 import "./shoppingItems.css";
+import { useEffect, useState } from "react";
 
-export default function ShoppingItems() {
+export default function ShoppingItems({ onAddToCart }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -12,7 +11,6 @@ export default function ShoppingItems() {
         const response = await fetch("https://pokeapi.co/api/v2/item/");
         const data = await response.json();
         setItems(data.results);
-        console.log(data.results);
       } catch (error) {
         console.alert("error by fetching in ShoppingItems.js");
       }
@@ -27,6 +25,8 @@ export default function ShoppingItems() {
           key={itemToRender.name}
           keyValue={itemToRender.name}
           url={itemToRender.url}
+          onAddToCart={onAddToCart}
+          isAddable={true}
         />
       ))}
     </>
