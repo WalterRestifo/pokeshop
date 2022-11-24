@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
 
 export default function Item({ keyValue, url, onAddToCart, isAddable }) {
   const [infoAboutItem, setInfoAboutItem] = useState({
@@ -17,7 +18,9 @@ export default function Item({ keyValue, url, onAddToCart, isAddable }) {
           cost: data.cost,
           name: data.name,
           url: url,
+          id: nanoid(),
         });
+        console.log(data);
       } catch (error) {
         console.error("error by fetching in Items.js", url);
       }
