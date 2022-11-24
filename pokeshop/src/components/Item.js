@@ -14,7 +14,7 @@ export default function Item({ keyValue, url }) {
         const data = await response.json();
         console.log("data: ", data);
         setInfoAboutItem({
-          image: "",
+          image: data.sprites.default,
           cost: data.cost,
           name: data.name,
         });
@@ -27,6 +27,7 @@ export default function Item({ keyValue, url }) {
   console.log("infoAboutItem: ", infoAboutItem);
   return (
     <article className="shoppingItem__article" key={keyValue}>
+      <img src={infoAboutItem.image} alt={infoAboutItem.name} />
       <p>{infoAboutItem.name}</p>
       <p>{infoAboutItem.cost}$</p>
     </article>
