@@ -2,7 +2,7 @@ import Item from "./Item";
 import "./shoppingItems.css";
 import { useEffect, useState } from "react";
 
-export default function ShoppingItems({ onAddToCart }) {
+export default function ShoppingItems({ onAddToCart, onRemoveFromCart }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ export default function ShoppingItems({ onAddToCart }) {
           keyValue={itemToRender.name}
           url={itemToRender.url}
           onAddToCart={onAddToCart}
+          onRemoveFromCart={onRemoveFromCart}
           isAddable={true}
         />
       ))}

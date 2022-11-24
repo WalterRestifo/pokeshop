@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import ShoppingItems from "./components/ShoppingItems";
@@ -11,11 +11,18 @@ function App() {
     setCart([item, ...cart]);
   }
 
+  function handleRemoveFromCart(item) {
+    setCart(cart.filter((cartItem) => cartItem.id !== item.id));
+  }
+
   return (
     <div className="grid-container">
       <Header />
-      <Cart cart={cart} />
-      <ShoppingItems onAddToCart={handleAddToCart} />
+      <Cart cart={cart} onRemoveFromCart={handleRemoveFromCart} />
+      <ShoppingItems
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+      />
     </div>
   );
 }
