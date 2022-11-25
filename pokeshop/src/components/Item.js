@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { nanoid } from "nanoid";
+import styled from "styled-components";
 
 export default function Item({
   keyValue,
@@ -39,14 +39,22 @@ export default function Item({
       <p>{infoAboutItem.name}</p>
       <p>{infoAboutItem.cost}$</p>
       {isAddable ? (
-        <button type="button" onClick={() => onAddToCart(infoAboutItem)}>
+        <StyledButton type="button" onClick={() => onAddToCart(infoAboutItem)}>
           Add Item
-        </button>
+        </StyledButton>
       ) : (
-        <button type="button" onClick={() => onRemoveFromCart(infoAboutItem)}>
+        <StyledButton
+          type="button"
+          onClick={() => onRemoveFromCart(infoAboutItem)}
+        >
           Remove Item
-        </button>
+        </StyledButton>
       )}
     </article>
   );
 }
+
+const StyledButton = styled.button`
+  background-color: blue;
+  color: yellow;
+`;
