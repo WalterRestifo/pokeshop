@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 
-export default function Item({ keyValue, url, onAddToCart, isAddable }) {
+export default function Item({
+  keyValue,
+  url,
+  onAddToCart,
+  onRemoveFromCart,
+  isAddable,
+}) {
   const [infoAboutItem, setInfoAboutItem] = useState({
     image: "",
     cost: 0,
@@ -18,7 +24,7 @@ export default function Item({ keyValue, url, onAddToCart, isAddable }) {
           cost: data.cost,
           name: data.name,
           url: url,
-          id: nanoid(),
+          id: data.id,
         });
         console.log(data);
       } catch (error) {
@@ -32,9 +38,13 @@ export default function Item({ keyValue, url, onAddToCart, isAddable }) {
       <img src={infoAboutItem.image} alt={infoAboutItem.name} />
       <p>{infoAboutItem.name}</p>
       <p>{infoAboutItem.cost}$</p>
-      {isAddable && (
+      {isAddable ? (
         <button type="button" onClick={() => onAddToCart(infoAboutItem)}>
           Add Item
+        </button>
+      ) : (
+        <button type="button" onClick={() => onRemoveFromCart(infoAboutItem)}>
+          Remove Item
         </button>
       )}
     </article>
