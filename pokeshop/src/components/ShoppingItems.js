@@ -26,8 +26,6 @@ export default function ShoppingItems({ onAddToCart, onRemoveFromCart }) {
           keyValue={itemToRender.name}
           url={itemToRender.url}
           onAddToCart={onAddToCart}
-          onRemoveFromCart={onRemoveFromCart}
-          isAddable={true}
         />
       ))}
     </>

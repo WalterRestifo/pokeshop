@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export default function Item({
-  keyValue,
-  url,
-  onAddToCart,
-  onRemoveFromCart,
-  isAddable,
-}) {
+export default function Item({ keyValue, url, onAddToCart }) {
   const [infoAboutItem, setInfoAboutItem] = useState({
     image: "",
     cost: 0,
@@ -38,18 +32,9 @@ export default function Item({
       <img src={infoAboutItem.image} alt={infoAboutItem.name} />
       <p>{infoAboutItem.name}</p>
       <p>{infoAboutItem.cost}$</p>
-      {isAddable ? (
-        <StyledButton type="button" onClick={() => onAddToCart(infoAboutItem)}>
-          Add Item
-        </StyledButton>
-      ) : (
-        <StyledButton
-          type="button"
-          onClick={() => onRemoveFromCart(infoAboutItem)}
-        >
-          Remove Item
-        </StyledButton>
-      )}
+      <StyledButton type="button" onClick={() => onAddToCart(infoAboutItem)}>
+        Add Item
+      </StyledButton>
     </article>
   );
 }
