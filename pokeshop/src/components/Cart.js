@@ -15,6 +15,9 @@ export default function Cart({ cart, onRemoveFromCart }) {
           onRemoveFromCart={onRemoveFromCart}
         />
       ))}
+      <hr />
+      <p>Sum : 3200$</p>
+      <button>Buy Now</button>
     </section>
   );
 }

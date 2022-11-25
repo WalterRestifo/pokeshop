@@ -20,7 +20,6 @@ export default function Item({ keyValue, url, onAddToCart }) {
           url: url,
           id: data.id,
         });
-        console.log(data);
       } catch (error) {
         console.error("error by fetching in Items.js", url);
       }
