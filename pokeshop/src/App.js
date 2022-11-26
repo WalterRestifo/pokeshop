@@ -11,14 +11,24 @@ function App() {
   function handleAddToCart(item) {
     //variation 1 setCart([item, ...cart]);
 
-    const cloneOfCart = cart.map((justWantToCloneCart) => justWantToCloneCart);
-    const arrayOfSameID = cloneOfCart.filter(
-      (cartItem) => cartItem.id === item.id
-    );
-    const internCount = arrayOfSameID.length + 1;
-    setCart([{ count: internCount, ...item }, ...cart]);
-    console.log(cart);
+    // variation 2 const cloneOfCart = cart.map((justWantToCloneCart) => justWantToCloneCart);
+    // const arrayOfSameID = cloneOfCart.filter(
+    //   (cartItem) => cartItem.id === item.id
+    // );
+    // const internCount = arrayOfSameID.length + 1;
+    // setCart([{ count: internCount, ...item }, ...cart]);
+    // console.log(cart);
 
+    const cloneOfCart = cart.map((justWantToCloneCart) => justWantToCloneCart);
+    if (cloneOfCart.some((e) => e.name === item.name)) {
+      setCart(
+        [{ count: counter + 1, ...item }, ...cart].filter(
+          (cartItem) => cartItem.count === counter + 1
+        )
+      );
+    } else {
+      setCart([{ count: counter + 1, ...item }, ...cart]);
+    }
     setCounter(counter + 1);
   }
 
