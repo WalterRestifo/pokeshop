@@ -1,30 +1,29 @@
 import "./Cart.css";
 import CartItem from "./CartItem";
 
-export default function Cart({ cart, counter, onRemoveFromCart }) {
+export default function Cart({ items, onRemoveFromCart }) {
   return (
     <section className="cart-container">
       <h2>Cart</h2>
-      {cart.map((itemOfCart) => {
-        // console.log("counter: ", counter);
-        // console.log("itemOfCart.count: ", itemOfCart.count);
-        // if (itemOfCart.count < counter) {
-        //   return "";
-        // } else {
-        return (
-          <CartItem
-            image={itemOfCart.image}
-            name={itemOfCart.name}
-            cost={itemOfCart.cost}
-            count={itemOfCart.count}
-            id={itemOfCart.id}
-            onRemoveFromCart={onRemoveFromCart}
-          />
-        );
-        //}
-      })}
+      {items
+        .filter((item) => item.counter > 0)
+        .map((items) => {
+          return (
+            <CartItem
+              image={items.image}
+              name={items.name}
+              cost={items.cost}
+              counter={items.counter}
+              id={items.id}
+              onRemoveFromCart={onRemoveFromCart}
+            />
+          );
+        })}
       <hr />
-      <p>Sum : 0</p>
+      <p>
+        Sum :{" "}
+        {items.map((item) => item.counter * item.cost).reduce((a, b) => a + b)}
+      </p>
       <button>Buy Now</button>
     </section>
   );

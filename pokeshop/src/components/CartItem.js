@@ -2,7 +2,7 @@ export default function CartItem({
   image,
   name,
   cost,
-  count,
+  counter,
   id,
   onRemoveFromCart,
 }) {
@@ -10,7 +10,7 @@ export default function CartItem({
     <article className="cartItem__article" key={name}>
       <img src={image} alt={name} />
       <p>{name}</p>
-      <p>{count}</p>
+      <p>{counter}</p>
       <p>{cost}$</p>
       <button type="button" onClick={() => onRemoveFromCart(id)}>
         Remove Item
