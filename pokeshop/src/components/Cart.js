@@ -1,10 +1,10 @@
-import "./Cart.css";
+import styled from "styled-components";
 import CartItem from "./CartItem";
 
 export default function Cart({ items, onRemoveFromCart, onBuy }) {
   return (
-    <section className="cart-container">
-      <h2>Cart</h2>
+    <StyledSection>
+      <StyledH2>Cart</StyledH2>
       {items
         .filter((item) => item.counter > 0)
         .map((items) => {
@@ -20,11 +20,26 @@ export default function Cart({ items, onRemoveFromCart, onBuy }) {
           );
         })}
       <hr />
+
       <p>
         Sum :{" "}
-        {items.map((item) => item.counter * item.cost).reduce((a, b) => a + b)}
+        {items.length === 0
+          ? 0
+          : items
+              .map((item) => item.counter * item.cost)
+              .reduce((a, b) => a + b)}
+        $
       </p>
       <button onClick={onBuy}>Buy Now</button>
-    </section>
+    </StyledSection>
   );
 }
+
+const StyledH2 = styled.h2`
+  font-size: medium;
+  text-align: left;
+`;
+
+const StyledSection = styled.section`
+  grid-column: span 2;
+`;

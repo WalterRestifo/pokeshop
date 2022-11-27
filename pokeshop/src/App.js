@@ -66,7 +66,6 @@ function App() {
     });
     setItems(cloneOfItems);
   }
-
   return (
     <div className="grid-container">
       <Header />

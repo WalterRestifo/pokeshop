@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export default function CartItem({
   image,
   name,
@@ -7,14 +9,23 @@ export default function CartItem({
   onRemoveFromCart,
 }) {
   return (
-    <article className="cartItem__article" key={name}>
+    <StyledArticle key={name}>
       <img src={image} alt={name} />
       <p>{name}</p>
       <p>{counter}</p>
       <p>{cost}$</p>
-      <button type="button" onClick={() => onRemoveFromCart(id)}>
-        Remove Item
-      </button>
-    </article>
+      <StyledButton type="button" onClick={() => onRemoveFromCart(id)}>
+        X
+      </StyledButton>
+    </StyledArticle>
   );
 }
+
+const StyledArticle = styled.article`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const StyledButton = styled.button`
+  border-radius: 25px;
+`;
