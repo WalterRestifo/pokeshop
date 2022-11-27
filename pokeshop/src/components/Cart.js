@@ -1,7 +1,7 @@
 import "./Cart.css";
 import CartItem from "./CartItem";
 
-export default function Cart({ items, onRemoveFromCart }) {
+export default function Cart({ items, onRemoveFromCart, onBuy }) {
   return (
     <section className="cart-container">
       <h2>Cart</h2>
@@ -24,7 +24,7 @@ export default function Cart({ items, onRemoveFromCart }) {
         Sum :{" "}
         {items.map((item) => item.counter * item.cost).reduce((a, b) => a + b)}
       </p>
-      <button>Buy Now</button>
+      <button onClick={onBuy}>Buy Now</button>
     </section>
   );
 }

@@ -5,7 +5,6 @@ import Item from "./components/Item";
 import Cart from "./components/Cart";
 
 function App() {
-  const [cart, setCart] = useState([]);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -60,10 +59,22 @@ function App() {
     setItems(cloneOfItems);
   }
 
+  function handleBuy() {
+    const cloneOfItems = items.map((item) => {
+      item.counter = 0;
+      return item;
+    });
+    setItems(cloneOfItems);
+  }
+
   return (
     <div className="grid-container">
       <Header />
-      <Cart items={items} onRemoveFromCart={handleRemoveFromCart} />
+      <Cart
+        items={items}
+        onRemoveFromCart={handleRemoveFromCart}
+        onBuy={handleBuy}
+      />
       {items.map((item) => (
         <Item key={item.name} item={item} onAddToCart={handleAddToCart} />
       ))}
